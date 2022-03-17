@@ -90,9 +90,9 @@ function process_data(data) {
         if (executionType === 'NEW') {
             if (orderStatus === 'NEW') {
                 if (orderType === "MARKET") {
-                    txt = `<b>🔥Silver Mirror🔥</b>\n      ✅ ✅ ✅\n<b>Spot ${orderType} ${side}\nOrdre CRÉÉ</b>\n<b>Token:</b>  #${symbol}\n\n<a href="https://lecollectif-crypto.fr/">🤩Le Collectif Crypto🤩</a>`
+                    txt = `<b>🔥Silver Mirror🔥</b>\n      ✅ ✅ ✅\n<b>Spot ${orderType} ${side}\nOrdre CRÉÉ</b>\n<b>Token:</b>  #${symbol}\n\n<link href="https://lecollectif-crypto.fr/">🤩Le Collectif Crypto🤩</link>`
                 }else {
-                    txt = `<b>🔥Silver Mirror🔥</b>\n      ✅ ✅ ✅\n<b>Spot ${orderType} ${side}\nOrdre CRÉÉ</b>\n<b>Token:</b>  #${symbol}\n\n<a href="https://lecollectif-crypto.fr/">🤩Le Collectif Crypto🤩</a>`
+                    txt = `<b>🔥Silver Mirror🔥</b>\n      ✅ ✅ ✅\n<b>Spot ${orderType} ${side}\nOrdre CRÉÉ</b>\n<b>Token:</b>  #${symbol}\n\n<link href="https://lecollectif-crypto.fr/">🤩Le Collectif Crypto🤩</link>`
                 }
             } else if (orderStatus === 'REJECTED') {
                 if (orderType === "MARKET") {
@@ -109,7 +109,7 @@ function process_data(data) {
             if (orderStatus === 'PARTIALLY_FILLED') {
                 txt = `<b>🔥Silver Mirror🔥</b>\n      ⌛ ⌛ ⌛\n<b>Spot ${orderType} ${side}\nOrdre PARTIELLEMENT REMPLI</b>\n<b>Token:</b>  #${symbol}\n<b>Dernier remplo:</b>  ${fixFloat(lastTradeQuantity)}\n<b>Total Rempli:</b>  ${fixFloat(Cumulative_filled_quantity)}\n<b>Restant:</b>  ${fixFloat(Number(quantity) - Number(Cumulative_filled_quantity))}\n\n<a href="https://lecollectif-crypto.fr/">🤩Le Collectif Crypto🤩</a>`
             } else if (orderStatus === 'FILLED') {
-                txt = `<b>🔥Silver Mirror🔥</b>\n      💰 💰 💰\n<b>Spot ${orderType} ${side}\nOrdre ENTIEREMENT REMPLI</b>\n<b>Token:</b>  #${symbol}\n<b>Rempli:</b>  ${fixFloat(Cumulative_filled_quantity)}${total}\n\n<a href="https://lecollectif-crypto.fr/">🤩Le Collectif Crypto🤩</a>`
+                txt = `<b>🔥Silver Mirror🔥</b>\n      💰 💰 💰\n<b>Spot ${orderType} ${side}\nOrdre ENTIEREMENT REMPLI</b>\n<b>Token:</b>  #${symbol}\n<b>Rempli:</b>  ${fixFloat(Cumulative_filled_quantity)}${total}\n\n🤩Le Collectif Crypto🤩`
             }
         } else if (['REPLACED', 'EXPIRED', 'PENDING_CANCEL'].includes(orderStatus)) {
             txt = `<b>🔥Silver Mirror🔥</b>\n      🔴 🟡 🔵\n<b>Spot ${orderType} ${side}\nOrdre ${orderStatus}</b>\n<b>Token:</b>  #${symbol}\n\n<a href="https://lecollectif-crypto.fr/">🤩Le Collectif Crypto🤩</a>`
