@@ -39,7 +39,7 @@ try {
         process_data(data);
     }, 60000).then(() => {
         console.log(`${event} - Monitoring Spot User Order Data for binance.com`);
-        sendMessage(`<b>Binance Spot Order Monitor Started</b>\nthis message shows that you or heroku(if your are using) restart the bot.`)
+        sendMessage(`<b>Mise à jour du Bot Reussi</b>`)
     })
 } catch (err) {
     console.error(`${event} - ${err}`)
@@ -90,31 +90,31 @@ function process_data(data) {
         if (executionType === 'NEW') {
             if (orderStatus === 'NEW') {
                 if (orderType === "MARKET") {
-                    txt = `<b>🔥Silver Mirror🔥</b>\n      ✅ ✅ ✅\n<b>Spot ${orderType} ${side}\nOrdre CRÉÉ</b>\n<b>Token:</b>  #${symbol}\n\n<link href="https://lecollectif-crypto.fr/">🤩Le Collectif Crypto🤩</link>`
+                    txt = `<b>🔥Silver Mirror🔥</b>\n      ✅ ✅ ✅\n<b>Spot ${orderType} ${side}\nOrdre CRÉÉ</b>\n<b>Token:</b>  #${symbol}\n\n🤩Le Collectif Crypto🤩`
                 }else {
-                    txt = `<b>🔥Silver Mirror🔥</b>\n      ✅ ✅ ✅\n<b>Spot ${orderType} ${side}\nOrdre CRÉÉ</b>\n<b>Token:</b>  #${symbol}\n\n<link href="https://lecollectif-crypto.fr/">🤩Le Collectif Crypto🤩</link>`
+                    txt = `<b>🔥Silver Mirror🔥</b>\n      ✅ ✅ ✅\n<b>Spot ${orderType} ${side}\nOrdre CRÉÉ</b>\n<b>Token:</b>  #${symbol}\n\n🤩Le Collectif Crypto🤩`
                 }
             } else if (orderStatus === 'REJECTED') {
                 if (orderType === "MARKET") {
-                    txt = `<b>🔥Silver Mirror🔥</b>\n      🚫 🚫 🚫\n<b>Spot ${orderType} ${side}\nOrdre REJETÉ</b>\n<b>Token:</b>  #${symbol}\n<b>Motif du rejet de l'ordre:</b>  #ID${Order_reject_reason}\n\n<a href="https://lecollectif-crypto.fr/">🤩Le Collectif Crypto🤩</a>`
+                    txt = `<b>🔥Silver Mirror🔥</b>\n      🚫 🚫 🚫\n<b>Spot ${orderType} ${side}\nOrdre REJETÉ</b>\n<b>Token:</b>  #${symbol}\n<b>Motif du rejet de l'ordre:</b>  #ID${Order_reject_reason}\n\n🤩Le Collectif Crypto🤩`
                 }else {
-                    txt = `<b>🔥Silver Mirror🔥</b>\n      🚫 🚫 🚫\n<b>Spot ${orderType} ${side}\nOrdre REJETÉ</b>\n<b>Token:</b>  #${symbol}\n<b>Motif du rejet de l'ordre:</b>  #ID${Order_reject_reason}\n\n<a href="https://lecollectif-crypto.fr/">🤩Le Collectif Crypto🤩</a>`
+                    txt = `<b>🔥Silver Mirror🔥</b>\n      🚫 🚫 🚫\n<b>Spot ${orderType} ${side}\nOrdre REJETÉ</b>\n<b>Token:</b>  #${symbol}\n<b>Motif du rejet de l'ordre:</b>  #ID${Order_reject_reason}\n\n🤩Le Collectif Crypto🤩`
                 }
             }
         } else if (executionType === 'CANCELED') {
             if (orderStatus === 'CANCELED') {
-                txt = `<b>🔥Silver Mirror🔥</b>\n      ❎ ❎ ❎\n<b>Spot ${orderType} ${side}\nOrdre ANNULÉ</b>\n<b>Token:</b>  #${symbol}\n\n<a href="https://lecollectif-crypto.fr/">🤩Le Collectif Crypto🤩</a>`
+                txt = `<b>🔥Silver Mirror🔥</b>\n      ❎ ❎ ❎\n<b>Spot ${orderType} ${side}\nOrdre ANNULÉ</b>\n<b>Token:</b>  #${symbol}\n\n🤩Le Collectif Crypto🤩`
             }
         } else if (executionType === 'TRADE') {
             if (orderStatus === 'PARTIALLY_FILLED') {
-                txt = `<b>🔥Silver Mirror🔥</b>\n      ⌛ ⌛ ⌛\n<b>Spot ${orderType} ${side}\nOrdre PARTIELLEMENT REMPLI</b>\n<b>Token:</b>  #${symbol}\n<b>Dernier remplo:</b>  ${fixFloat(lastTradeQuantity)}\n<b>Total Rempli:</b>  ${fixFloat(Cumulative_filled_quantity)}\n<b>Restant:</b>  ${fixFloat(Number(quantity) - Number(Cumulative_filled_quantity))}\n\n<a href="https://lecollectif-crypto.fr/">🤩Le Collectif Crypto🤩</a>`
+                txt = `<b>🔥Silver Mirror🔥</b>\n      ⌛ ⌛ ⌛\n<b>Spot ${orderType} ${side}\nOrdre PARTIELLEMENT REMPLI</b>\n<b>Token:</b>  #${symbol}\n<b>Dernier rempli:</b>  ${fixFloat(lastTradeQuantity)}\n<b>Total Rempli:</b>  ${fixFloat(Cumulative_filled_quantity)}\n<b>Restant:</b>  ${fixFloat(Number(quantity) - Number(Cumulative_filled_quantity))}\n\n🤩Le Collectif Crypto🤩`
             } else if (orderStatus === 'FILLED') {
-                txt = `<b>🔥Silver Mirror🔥</b>\n      💰 💰 💰\n<b>Spot ${orderType} ${side}\nOrdre ENTIEREMENT REMPLI</b>\n<b>Token:</b>  #${symbol}\n<b>Rempli:</b>  ${fixFloat(Cumulative_filled_quantity)}${total}\n\n🤩Le Collectif Crypto🤩`
+                txt = `<b>🔥Silver Mirror🔥</b>\n      💰 💰 💰\n<b>Spot ${orderType} ${side}\nOrdre ENTIEREMENT REMPLI</b>\n<b>Token:</b>  #${symbol}\n\n🤩Le Collectif Crypto🤩`
             }
         } else if (['REPLACED', 'EXPIRED', 'PENDING_CANCEL'].includes(orderStatus)) {
-            txt = `<b>🔥Silver Mirror🔥</b>\n      🔴 🟡 🔵\n<b>Spot ${orderType} ${side}\nOrdre ${orderStatus}</b>\n<b>Token:</b>  #${symbol}\n\n<a href="https://lecollectif-crypto.fr/">🤩Le Collectif Crypto🤩</a>`
+            txt = `<b>🔥Silver Mirror🔥</b>\n      🔴 🟡 🔵\n<b>Spot ${orderType} ${side}\nOrdre ${orderStatus}</b>\n<b>Token:</b>  #${symbol}\n\n🤩Le Collectif Crypto🤩`
         } else {
-            txt = `<b>🔥Silver Mirror🔥</b>\n      ⚠️ ⚠️⚠️\n<b>Indéfini</b>\nType d'exécution:  ${executionType}\nOrdre Status ${orderStatus}\nTous les détails:\n${data}\n\n<a href="https://lecollectif-crypto.fr/">🤩Le Collectif Crypto🤩</a>`
+            txt = `<b>🔥Silver Mirror🔥</b>\n      ⚠️ ⚠️⚠️\n<b>Indéfini</b>\nType d'exécution:  ${executionType}\nOrdre Status ${orderStatus}\nTous les détails:\n${data}\n\n🤩Le Collectif Crypto🤩`
         }
         sendMessage(txt)
     }
